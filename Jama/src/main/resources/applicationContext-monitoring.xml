@@ -1,0 +1,46 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+			               http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+			               http://www.springframework.org/schema/aop
+			               http://www.springframework.org/schema/aop/spring-aop-3.2.xsd">
+
+    <bean id="settings" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+    	<property name="location">
+    	          <value>classpath:monitoring.properties</value>
+    	</property>
+    </bean>
+    <bean id="exporter" class="org.springframework.jmx.export.MBeanExporter" lazy-init="false">
+            <property name="beans">
+                <props>
+                    <prop key="${monitoring.jmx.export.bean.name}">runtimeKPIMBean</prop>
+                </props>
+            </property>
+        <property name="registrationPolicy" value="IGNORE_EXISTING"/>
+    </bean>
+
+    <aop:config proxy-target-class="false">
+        <aop:pointcut id="serviceMethods" expression="execution(@com.blogspot.ostas.monitoring.annotation.MonitoringTarget * *(..))"/>
+        <aop:advisor pointcut-ref="serviceMethods" advice-ref="performanceMonitor" order="60"/>
+    </aop:config>
+
+
+    <bean id="runtimeKPIMBean" class="com.blogspot.ostas.monitoring.publish.jmx.MonitoringStatisticsExportMBean">
+        <constructor-arg name="performanceMonitoringInterceptor" ref="performanceMonitor"/>
+    </bean>
+
+    <bean id="methodNamingStrategy" class="com.blogspot.ostas.monitoring.publish.naming.impl.PackageLessMethodNamingStrategy"/>
+
+    <bean id="performanceMonitor" class="com.blogspot.ostas.monitoring.interceptor.PerformanceMonitoringInterceptor">
+        <property name="methodNamingStrategy" ref="methodNamingStrategy"/>
+    </bean>
+
+    <bean id="methodsCatcher" class="com.blogspot.ostas.monitoring.preprocess.MethodsCatcherInitializingBean" depends-on="aspectNotify">
+        <property name="performanceMonitoringInterceptor" ref="performanceMonitor"/>
+        <property name="methodNamingStrategy" ref="methodNamingStrategy"/>
+        <property name="aspectNotify" ref="aspectNotify"/>
+    </bean>
+
+    <bean id="aspectNotify" class="com.blogspot.ostas.monitoring.preprocess.AdviceNotifier"/>
+</beans>
