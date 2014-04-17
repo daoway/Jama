@@ -19,7 +19,7 @@
         <dependency>
             <groupId>com.blogspot.ostas.monitoring</groupId>
             <artifactId>Jama</artifactId>
-            <version>${parent.version}</version>
+            <version>${project.parent.version}</version>
             <type>test-jar</type>
         </dependency>
         <dependency>
@@ -37,7 +37,7 @@
         <dependency>
             <groupId>com.blogspot.ostas.monitoring</groupId>
             <artifactId>Jama</artifactId>
-            <version>${parent.version}</version>
+            <version>${project.parent.version}</version>
         </dependency>
 
         <dependency>
