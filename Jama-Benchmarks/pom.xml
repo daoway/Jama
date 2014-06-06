@@ -2,7 +2,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.blogspot.ostas.monitoring</groupId>
+    <groupId>com.blogspot.ostas</groupId>
     <artifactId>Jama-Benchmarks</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
@@ -10,14 +10,14 @@
     <name>JAMA JMH benchmark</name>
 
     <parent>
-        <groupId>com.blogspot.ostas.monitoring</groupId>
+        <groupId>com.blogspot.ostas</groupId>
         <artifactId>Jama-Parent</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
     <dependencies>
         <dependency>
-            <groupId>com.blogspot.ostas.monitoring</groupId>
+            <groupId>com.blogspot.ostas</groupId>
             <artifactId>Jama</artifactId>
             <version>${project.parent.version}</version>
             <type>test-jar</type>
@@ -35,7 +35,7 @@
         </dependency>
 
         <dependency>
-            <groupId>com.blogspot.ostas.monitoring</groupId>
+            <groupId>com.blogspot.ostas</groupId>
             <artifactId>Jama</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
