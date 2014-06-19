@@ -4,6 +4,6 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <import resource="classpath*:applicationContext-monitoring.xml"/>
-    <bean id="greetingService" class="org.glassfish.jersey.examples.helloworld.spring.GreetingServiceImpl"/>
+    <import resource="classpath:applicationContext-monitoring.xml"/>
+    <bean id="greetingService" class="com.blogspot.ostas.examples.helloworld.spring.GreetingServiceImpl"/>
 </beans>

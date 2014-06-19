@@ -1,4 +1,4 @@
-package org.glassfish.jersey.examples.helloworld.spring;
+package com.blogspot.ostas.examples.helloworld.spring;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

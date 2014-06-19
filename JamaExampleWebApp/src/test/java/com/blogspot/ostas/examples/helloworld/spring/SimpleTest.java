@@ -1,6 +1,5 @@
 package com.blogspot.ostas.examples.helloworld.spring;
 
-import org.glassfish.jersey.examples.helloworld.spring.MyWebService;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.test.JerseyTest;
 import org.junit.Test;

@@ -1,4 +1,4 @@
-package org.glassfish.jersey.examples.helloworld.spring;
+package com.blogspot.ostas.examples.helloworld.spring;
 
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.server.spring.scope.RequestContextFilter;
