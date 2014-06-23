@@ -12,26 +12,12 @@ import java.util.Set;
 public class PointcutClassesCandidateReflectionsImpl implements PointcutClassesCandidate {
     @Override
     public Set<Class<? extends Object>> getClassList() {
-
         Reflections reflections = new Reflections(new ConfigurationBuilder().
-                setUrls(ClasspathHelper.forManifest())
+                setUrls(ClasspathHelper.forJavaClassPath())
                 .setScanners(new SubTypesScanner(false), new TypeAnnotationsScanner()
                         //.filterResultsBy(new FilterBuilder().exclude(PointcutClassesCandidateSpringImpl.class.getName())
                 )
         );
         return reflections.getSubTypesOf(Object.class);
-
-        /*
-        Set<Class <? extends Object>> classes = new HashSet<>();
-        final List<PojoClass> pojoClasses = PojoClassFactory.getPojoClassesRecursively("com.blogspot.ostas", null);
-        for(PojoClass pojoClass : pojoClasses){
-            classes.add(pojoClass.getClazz());
-        }
-        return classes;
-        */
-
-    }
-    public static void main(String args[]){
-        System.out.println(new PointcutClassesCandidateReflectionsImpl().getClassList());
     }
 }

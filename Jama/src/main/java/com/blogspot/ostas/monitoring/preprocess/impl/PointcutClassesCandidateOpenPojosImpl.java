@@ -12,13 +12,11 @@ public class PointcutClassesCandidateOpenPojosImpl implements PointcutClassesCan
     @Override
     public Set<Class<? extends Object>> getClassList() {
         Set<Class <? extends Object>> classes = new HashSet<>();
+        //final List<PojoClass> pojoClasses = PojoClassFactory.getPojoClassesRecursively("com.blogspot.ostas.monitoring", null);
         final List<PojoClass> pojoClasses = PojoClassFactory.getPojoClassesRecursively("com.blogspot.ostas.monitoring", null);
         for(PojoClass pojoClass : pojoClasses){
             classes.add(pojoClass.getClazz());
         }
         return classes;
-    }
-    public static void main(String args[]){
-        System.out.println(new PointcutClassesCandidateOpenPojosImpl().getClassList());
     }
 }

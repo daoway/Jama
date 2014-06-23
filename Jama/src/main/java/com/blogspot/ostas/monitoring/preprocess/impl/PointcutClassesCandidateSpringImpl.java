@@ -11,7 +11,7 @@ import java.util.Set;
 
 public class PointcutClassesCandidateSpringImpl implements BeanPostProcessor, PointcutClassesCandidate {
 	private static final Logger LOG = Logger.getLogger(PointcutClassesCandidateSpringImpl.class);
-    private static Set<Class<? extends Object>> classList = new HashSet<>();
+    private Set<Class<? extends Object>> classList = new HashSet<>();
 	@Override
 	public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
         if(LOG.isDebugEnabled()){
