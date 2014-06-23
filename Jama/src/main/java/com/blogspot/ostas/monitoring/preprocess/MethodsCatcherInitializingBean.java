@@ -13,7 +13,7 @@ import org.springframework.context.ApplicationContextAware;
 
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
-import java.util.List;
+import java.util.Set;
 import java.util.concurrent.atomic.AtomicLong;
 
 public class MethodsCatcherInitializingBean implements InitializingBean, ApplicationContextAware{
@@ -22,7 +22,7 @@ public class MethodsCatcherInitializingBean implements InitializingBean, Applica
     private PerformanceMonitoringInterceptor performanceMonitoringInterceptor;
     private final String pointcutBeanName = "serviceMethods";
     private MethodNamingStrategy methodNamingStrategy;
-    private AdviceNotifier adviceNotifier;
+    private PointcutClassesCandidate PointcutClassesCandidate;
 
     public void setPerformanceMonitoringInterceptor(PerformanceMonitoringInterceptor performanceMonitoringInterceptor) {
         this.performanceMonitoringInterceptor = performanceMonitoringInterceptor;
@@ -41,7 +41,7 @@ public class MethodsCatcherInitializingBean implements InitializingBean, Applica
     public void afterPropertiesSet() throws Exception {
         final Pointcut pointcut = (Pointcut) applicationContext.getBean(pointcutBeanName);
         final MethodMatcher methodMatcher = pointcut.getMethodMatcher();
-        final List<Class> pojoClasses = adviceNotifier.getClassList();
+        final Set<Class<? extends Object>> pojoClasses = PointcutClassesCandidate.getClassList();
         for(final Class pojoClass: pojoClasses){
                 for(final Method method: pojoClass.getDeclaredMethods()){
                     if(Modifier.isPublic(method.getModifiers())){
@@ -66,7 +66,7 @@ public class MethodsCatcherInitializingBean implements InitializingBean, Applica
         this.applicationContext = applicationContext;
     }
 
-    public void setAspectNotify(AdviceNotifier aspectNotify) {
-        this.adviceNotifier = aspectNotify;
+    public void setAspectNotify(PointcutClassesCandidate aspectNotify) {
+        this.PointcutClassesCandidate = aspectNotify;
     }
 }

@@ -84,5 +84,18 @@
           <scope>test</scope>
        </dependency>
 
+       <dependency>
+           <groupId>org.reflections</groupId>
+           <artifactId>reflections</artifactId>
+           <version>${reflections.version}</version>
+           <scope>provided</scope>
+       </dependency>
+       <dependency>
+           <groupId>com.googlecode.openpojo</groupId>
+           <artifactId>openpojo</artifactId>
+           <version>${openpojo.version}</version>
+           <scope>provided</scope>
+       </dependency>
+
    </dependencies>
 </project>

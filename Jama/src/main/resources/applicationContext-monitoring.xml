@@ -42,5 +42,5 @@
         <property name="aspectNotify" ref="aspectNotify"/>
     </bean>
 
-    <bean id="aspectNotify" class="com.blogspot.ostas.monitoring.preprocess.AdviceNotifier"/>
+    <bean id="aspectNotify" class="com.blogspot.ostas.monitoring.preprocess.impl.PointcutClassesCandidateSpringImpl"/>
 </beans>
