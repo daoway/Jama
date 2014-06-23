@@ -8,7 +8,7 @@ import javax.ws.rs.core.Application;
 
 import static org.junit.Assert.assertEquals;
 
-public class SimpleTest extends JerseyTest {
+public class WebServiceIntegrationTest extends JerseyTest {
     @Override
     protected Application configure() {
         return new ResourceConfig(MyWebService.class);
@@ -17,6 +17,6 @@ public class SimpleTest extends JerseyTest {
     @Test
     public void test() {
         final String hello = target("spring-hello").request().get(String.class);
-        assertEquals("Hello World!", hello);
+        assertEquals("hello, world!", hello);
     }
 }

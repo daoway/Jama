@@ -6,6 +6,7 @@ import com.blogspot.ostas.monitoring.statistics.MethodInvocationStats;
 import org.apache.log4j.Logger;
 import org.springframework.aop.MethodMatcher;
 import org.springframework.aop.Pointcut;
+import org.springframework.aop.framework.Advised;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.context.ApplicationContext;
@@ -13,6 +14,7 @@ import org.springframework.context.ApplicationContextAware;
 
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
+import java.util.HashSet;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicLong;
 
@@ -22,7 +24,6 @@ public class MethodsCatcherInitializingBean implements InitializingBean, Applica
     private PerformanceMonitoringInterceptor performanceMonitoringInterceptor;
     private final String pointcutBeanName = "serviceMethods";
     private MethodNamingStrategy methodNamingStrategy;
-    private PointcutClassesCandidate pointcutClassesCandidate;
 
     public void setPerformanceMonitoringInterceptor(PerformanceMonitoringInterceptor performanceMonitoringInterceptor) {
         this.performanceMonitoringInterceptor = performanceMonitoringInterceptor;
@@ -33,19 +34,26 @@ public class MethodsCatcherInitializingBean implements InitializingBean, Applica
 
     /*
          *  Logic behind this method : it obtains reference to pointcut method matcher (Spring AOP api)
-         *  which can answer the question - can this particular Method be a joint point defined by pointcut expression (see bean with name "serviceMethods" for reference).
-         *  Due to Spring AOP Pointcut API design we using classpath traversal for classes and their _declared_ methods as candidates for joint points.
-         *  Classpath scanning based on java package pattern name, e.q. "com.blogspot.ostas.myapp"
-         */
+         *  which can answer the question - can this particular Method be a joint point defined by pointcut expression
+         *  (see bean with name "serviceMethods" for reference).
+     */
     @Override
     public void afterPropertiesSet() throws Exception {
+        final Set<Class<? extends Object>> classes = new HashSet<>();
+        for(String beanName : applicationContext.getBeanDefinitionNames()){
+            Object bean = applicationContext.getBean(beanName);
+            if (bean instanceof Advised) {
+                Class clazz = ((Advised) bean).getTargetClass();
+                classes.add(clazz);
+            }
+        }
+
         final Pointcut pointcut = (Pointcut) applicationContext.getBean(pointcutBeanName);
         final MethodMatcher methodMatcher = pointcut.getMethodMatcher();
-        final Set<Class<? extends Object>> pojoClasses = pointcutClassesCandidate.getClassList();
-        for(final Class pojoClass: pojoClasses){
-                for(final Method method: pojoClass.getDeclaredMethods()){
+        for(final Class clazz : classes){
+                for(final Method method: clazz.getDeclaredMethods()){
                     if(Modifier.isPublic(method.getModifiers())){
-                        if(methodMatcher.matches(method,pojoClass,method.getParameterTypes())){
+                        if(methodMatcher.matches(method, clazz,method.getParameterTypes())){
                             if(LOGGER.isDebugEnabled()){
                                 LOGGER.debug("method matches pointcut : "+method);
                             }
@@ -64,9 +72,5 @@ public class MethodsCatcherInitializingBean implements InitializingBean, Applica
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
         this.applicationContext = applicationContext;
-    }
-
-    public void setPointcutClassesCandidate(PointcutClassesCandidate aspectNotify) {
-        this.pointcutClassesCandidate = aspectNotify;
     }
 }
