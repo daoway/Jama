@@ -6,8 +6,8 @@
     <version>1.0.2-SNAPSHOT</version>
     <packaging>pom</packaging>
     <url>https://github.com/daoway/Jama</url>
-    <name>Java monitoring library Launcher</name>
-    <description>A Java library for monitoring of Spring applications via JMX</description>
+    <name>Java monitoring library</name>
+    <description>Java library for monitoring of Spring applications via JMX</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

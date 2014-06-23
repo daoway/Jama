@@ -85,17 +85,6 @@
             <version>2.6</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>org.reflections</groupId>
-            <artifactId>reflections</artifactId>
-            <version>${reflections.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.googlecode.openpojo</groupId>
-            <artifactId>openpojo</artifactId>
-            <version>${openpojo.version}</version>
-        </dependency>
-
     </dependencies>
 
 	<build>
