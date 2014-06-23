@@ -36,11 +36,11 @@
         <property name="methodNamingStrategy" ref="methodNamingStrategy"/>
     </bean>
 
-    <bean id="methodsCatcher" class="com.blogspot.ostas.monitoring.preprocess.MethodsCatcherInitializingBean" depends-on="aspectNotify">
+    <bean id="methodsCatcher" class="com.blogspot.ostas.monitoring.preprocess.MethodsCatcherInitializingBean" depends-on="pointcutClassesCandidate">
         <property name="performanceMonitoringInterceptor" ref="performanceMonitor"/>
         <property name="methodNamingStrategy" ref="methodNamingStrategy"/>
-        <property name="aspectNotify" ref="aspectNotify"/>
+        <property name="pointcutClassesCandidate" ref="pointcutClassesCandidate"/>
     </bean>
 
-    <bean id="aspectNotify" class="com.blogspot.ostas.monitoring.preprocess.impl.PointcutClassesCandidateSpringImpl"/>
+    <bean id="pointcutClassesCandidate" class="com.blogspot.ostas.monitoring.preprocess.impl.PointcutClassesCandidateSpringImpl"/>
 </beans>

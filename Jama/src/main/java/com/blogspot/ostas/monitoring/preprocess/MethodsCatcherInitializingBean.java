@@ -22,7 +22,7 @@ public class MethodsCatcherInitializingBean implements InitializingBean, Applica
     private PerformanceMonitoringInterceptor performanceMonitoringInterceptor;
     private final String pointcutBeanName = "serviceMethods";
     private MethodNamingStrategy methodNamingStrategy;
-    private PointcutClassesCandidate PointcutClassesCandidate;
+    private PointcutClassesCandidate pointcutClassesCandidate;
 
     public void setPerformanceMonitoringInterceptor(PerformanceMonitoringInterceptor performanceMonitoringInterceptor) {
         this.performanceMonitoringInterceptor = performanceMonitoringInterceptor;
@@ -41,7 +41,7 @@ public class MethodsCatcherInitializingBean implements InitializingBean, Applica
     public void afterPropertiesSet() throws Exception {
         final Pointcut pointcut = (Pointcut) applicationContext.getBean(pointcutBeanName);
         final MethodMatcher methodMatcher = pointcut.getMethodMatcher();
-        final Set<Class<? extends Object>> pojoClasses = PointcutClassesCandidate.getClassList();
+        final Set<Class<? extends Object>> pojoClasses = pointcutClassesCandidate.getClassList();
         for(final Class pojoClass: pojoClasses){
                 for(final Method method: pojoClass.getDeclaredMethods()){
                     if(Modifier.isPublic(method.getModifiers())){
@@ -66,7 +66,7 @@ public class MethodsCatcherInitializingBean implements InitializingBean, Applica
         this.applicationContext = applicationContext;
     }
 
-    public void setAspectNotify(PointcutClassesCandidate aspectNotify) {
-        this.PointcutClassesCandidate = aspectNotify;
+    public void setPointcutClassesCandidate(PointcutClassesCandidate aspectNotify) {
+        this.pointcutClassesCandidate = aspectNotify;
     }
 }
