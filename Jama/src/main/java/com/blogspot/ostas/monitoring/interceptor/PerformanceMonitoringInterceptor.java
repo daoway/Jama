@@ -35,7 +35,7 @@ public class PerformanceMonitoringInterceptor implements MethodInterceptor {
 
     protected Object calculateStatsOnMethodInvocation(MethodInvocation methodInvocation) throws Throwable {
         final ReflectiveMethodInvocation reflectiveMethodInvocation = (ReflectiveMethodInvocation) methodInvocation;
-        final Class targetClass = AopUtils.getTargetClass(reflectiveMethodInvocation.getProxy());
+        final Class<? extends Object> targetClass = AopUtils.getTargetClass(reflectiveMethodInvocation.getProxy());
         //final Method currentMethod = AopUtils.getMostSpecificMethod(methodInvocation.getMethod(), targetClass);
         final Method candidateMethod = methodInvocation.getMethod();
         final Method currentMethod = targetClass.getMethod(candidateMethod.getName(), candidateMethod.getParameterTypes());

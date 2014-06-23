@@ -43,7 +43,7 @@ public class MethodsCatcherInitializingBean implements InitializingBean, Applica
         for(String beanName : applicationContext.getBeanDefinitionNames()){
             Object bean = applicationContext.getBean(beanName);
             if (bean instanceof Advised) {
-                Class clazz = ((Advised) bean).getTargetClass();
+                Class<? extends Object> clazz = ((Advised) bean).getTargetClass();
                 classes.add(clazz);
             }
         }
