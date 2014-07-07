@@ -1,6 +1,7 @@
 package com.blogspot.ostas.monitoring.publish.jmx;
 
 import com.blogspot.ostas.monitoring.interceptor.PerformanceMonitoringInterceptor;
+import com.blogspot.ostas.monitoring.publish.format.OutputDecorator;
 import org.apache.log4j.Logger;
 
 import javax.management.*;
@@ -12,9 +13,11 @@ public class MonitoringStatisticsExportMBean implements DynamicMBean {
     private static final boolean DEBUG = LOGGER.isDebugEnabled();
 
     private final PerformanceMonitoringInterceptor performanceMonitoringInterceptor;
+    private final OutputDecorator outputDecorator;
 
-    private MonitoringStatisticsExportMBean(PerformanceMonitoringInterceptor performanceMonitoringInterceptor) {
+    private MonitoringStatisticsExportMBean(PerformanceMonitoringInterceptor performanceMonitoringInterceptor, OutputDecorator outputDecorator) {
         this.performanceMonitoringInterceptor = performanceMonitoringInterceptor;
+        this.outputDecorator = outputDecorator;
     }
 
     private MBeanAttributeInfo[] prepareJmxAttributes() {
@@ -32,18 +35,7 @@ public class MonitoringStatisticsExportMBean implements DynamicMBean {
 
     @Override
     public Object getAttribute(String attribute) {
-        try {
-            if (performanceMonitoringInterceptor.getMethodInvocationStatsMap().containsKey(attribute)) {
-                final String value = performanceMonitoringInterceptor.getMethodInvocationStatsMap().get(attribute).toString();
-                if (DEBUG) {
-                    LOGGER.debug("[JMX_ATTRIBUTE] " + value);
-                }
-                return value;
-            }
-        } catch (Throwable throwable) {
-            LOGGER.error(throwable.fillInStackTrace());
-        }
-        return null;
+          return outputDecorator.format(performanceMonitoringInterceptor.getMethodInvocationStatsMap().get(attribute));
     }
 
     @Override
