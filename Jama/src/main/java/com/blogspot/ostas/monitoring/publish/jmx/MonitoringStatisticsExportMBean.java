@@ -1,7 +1,7 @@
 package com.blogspot.ostas.monitoring.publish.jmx;
 
 import com.blogspot.ostas.monitoring.interceptor.PerformanceMonitoringInterceptor;
-import com.blogspot.ostas.monitoring.publish.format.OutputDecorator;
+import com.blogspot.ostas.monitoring.publish.format.OutputFormatter;
 import org.apache.log4j.Logger;
 
 import javax.management.*;
@@ -13,11 +13,11 @@ public class MonitoringStatisticsExportMBean implements DynamicMBean {
     private static final boolean DEBUG = LOGGER.isDebugEnabled();
 
     private final PerformanceMonitoringInterceptor performanceMonitoringInterceptor;
-    private final OutputDecorator outputDecorator;
+    private final OutputFormatter outputFormatter;
 
-    private MonitoringStatisticsExportMBean(PerformanceMonitoringInterceptor performanceMonitoringInterceptor, OutputDecorator outputDecorator) {
+    private MonitoringStatisticsExportMBean(PerformanceMonitoringInterceptor performanceMonitoringInterceptor, OutputFormatter outputFormatter) {
         this.performanceMonitoringInterceptor = performanceMonitoringInterceptor;
-        this.outputDecorator = outputDecorator;
+        this.outputFormatter = outputFormatter;
     }
 
     private MBeanAttributeInfo[] prepareJmxAttributes() {
@@ -35,7 +35,7 @@ public class MonitoringStatisticsExportMBean implements DynamicMBean {
 
     @Override
     public Object getAttribute(String attribute) {
-          return outputDecorator.format(performanceMonitoringInterceptor.getMethodInvocationStatsMap().get(attribute));
+          return outputFormatter.format(performanceMonitoringInterceptor.getMethodInvocationStatsMap().get(attribute));
     }
 
     @Override

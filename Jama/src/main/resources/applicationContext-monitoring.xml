@@ -25,10 +25,10 @@
         <aop:advisor pointcut-ref="serviceMethods" advice-ref="performanceMonitor" order="60"/>
     </aop:config>
 
-    <bean id="outputDecorator" class="com.blogspot.ostas.monitoring.publish.format.impl.OutputDecoratorToStringImpl"/>
+    <bean id="outputDecorator" class="com.blogspot.ostas.monitoring.publish.format.impl.OutputFormatterToStringImpl"/>
     <bean id="runtimeKPIMBean" class="com.blogspot.ostas.monitoring.publish.jmx.MonitoringStatisticsExportMBean">
         <constructor-arg name="performanceMonitoringInterceptor" ref="performanceMonitor"/>
-        <constructor-arg name="outputDecorator" ref="outputDecorator"/>
+        <constructor-arg name="outputFormatter" ref="outputDecorator"/>
     </bean>
 
     <bean id="methodNamingStrategy" class="com.blogspot.ostas.monitoring.publish.naming.impl.PackageLessMethodNamingStrategy"/>
