@@ -28,16 +28,14 @@ public class MyBenchmark {
         myServiceEmptyMonitored = applicationContextEmptyMonitored.getBean(MyServiceImpl.class);
         testWebService = applicationContextWSMonitored.getBean(TestWebService.class);
     }
-/*
-     @GenerateMicroBenchmark
-     @BenchmarkMode(Mode.AverageTime)
-     //@Fork(0)
+
+    @GenerateMicroBenchmark
+    @BenchmarkMode(Mode.AverageTime)
     public void testPlainService() {
-        myServicePlain.setStringsCount(1);
+        myServicePlain.setStringsCount(1000);
         myServicePlain.listOfStrings("test");
     }
-*/
-/*
+
     @GenerateMicroBenchmark
     @BenchmarkMode(Mode.AverageTime)
     @OutputTimeUnit(TimeUnit.MILLISECONDS)
@@ -52,11 +50,13 @@ public class MyBenchmark {
         myServiceMonitored.setStringsCount(1000);
         myServiceMonitored.listOfStrings("test");
     }
-*/
+
+/*
     @GenerateMicroBenchmark
     @BenchmarkMode(Mode.AverageTime)
     @OutputTimeUnit(TimeUnit.MILLISECONDS)
     public void testMonitoredLayersService() throws InterruptedException {
         testWebService.testWebServiceMethod1("test1");
     }
+*/
 }
