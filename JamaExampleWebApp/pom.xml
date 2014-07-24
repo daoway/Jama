@@ -3,14 +3,14 @@
   	<groupId>com.blogspot.ostas</groupId>
   	<artifactId>JamaExampleWebApp</artifactId>
 	<packaging>war</packaging>
-	<version>1.0.2-SNAPSHOT</version>
+	<version>1.0.2</version>
 	<name>Jama demo - RESTful web service monitoring</name>
 	<url>https://github.com/daoway/Jama</url>
 
     <parent>
         <groupId>com.blogspot.ostas</groupId>
         <artifactId>Jama-Parent</artifactId>
-        <version>1.0.2-SNAPSHOT</version>
+        <version>1.0.2</version>
     </parent>
 
     <properties>
@@ -35,7 +35,7 @@
 		<dependency>
 		  	<groupId>com.blogspot.ostas</groupId>
 			<artifactId>Jama</artifactId>
-			<version>1.0.2-SNAPSHOT</version>
+			<version>1.0.2</version>
 		</dependency>
 
         <dependency>
