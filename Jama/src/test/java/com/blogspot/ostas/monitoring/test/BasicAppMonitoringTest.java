@@ -93,7 +93,7 @@ public class BasicAppMonitoringTest{
         assertNotNull(map);
         AtomicLong hints = map.get(computedMethodId).getHits();
         //that is how AOP works : recursive method call but hint is only one.
-        Assert.assertEquals((new AtomicLong(1)).longValue(), hints.longValue());
+        Assert.assertEquals(1l, hints.longValue());
     }
     @Test
     public void testJmxStuff() throws Exception {
