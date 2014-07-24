@@ -9,8 +9,7 @@ HP Site Scope etc.
 
 How to use.
 ----------
-Three simple steps required.
-1. This library published to Maven central, so add this entry to your pom.xml
+This library published to Maven central, so add this entry to your pom.xml
 ```xml
 <dependency>
     <groupId>com.blogspot.ostas</groupId>
@@ -18,7 +17,7 @@ Three simple steps required.
     <version>1.0.2</version>
 </dependency>
 ```
-3. Put @MonitoringTarget annotation on service method (String bean method) you want to monitor. Please notice that internal name is optional. :
+Put @MonitoringTarget annotation on service method (String bean method) you want to monitor. Please notice that internal name is optional. :
 ```java
 public class GreetingServiceImpl implements GreetingService {
     @MonitoringTarget(internalName = "internalName")
@@ -28,7 +27,7 @@ public class GreetingServiceImpl implements GreetingService {
     }
 }
 ```
-4. Define your bean as usual, but add import of monitoring routines from Jama library.
+Define your bean as usual, but add import of monitoring routines from Jama library.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -42,6 +41,12 @@ public class GreetingServiceImpl implements GreetingService {
   <bean id="greetingService" class="com.blogspot.ostas.examples.helloworld.spring.GreetingServiceImpl"/>
 
 </beans>
-
 ```
+
+Give the name to JMX bean for exported runtime monitoring metrics. Put monitoring.properties file to classpath with the following content, for example
+```text
+monitoring.jmx.export.bean.name=com.blogspot.ostas.examples.helloworld.spring:name=Monitoring
+```
+See example JamaExampleWebApp for reference.
+
 [![Build Status](https://buildhive.cloudbees.com/job/daoway/job/Jama/badge/icon)](https://buildhive.cloudbees.com/job/daoway/job/Jama/)
