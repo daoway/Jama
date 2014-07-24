@@ -6,7 +6,7 @@
     <version>1.0.2-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>JAMA JMH benchmark</name>
+    <name>Jama JMH benchmark</name>
 
     <parent>
         <groupId>com.blogspot.ostas</groupId>

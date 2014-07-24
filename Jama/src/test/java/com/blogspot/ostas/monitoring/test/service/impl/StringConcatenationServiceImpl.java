@@ -3,7 +3,7 @@ package com.blogspot.ostas.monitoring.test.service.impl;
 import com.blogspot.ostas.monitoring.annotation.MonitoringTarget;
 import com.blogspot.ostas.monitoring.test.service.StringConcatenatorService;
 
-public class StringConcatenatorServiceImpl implements StringConcatenatorService {
+public class StringConcatenationServiceImpl implements StringConcatenatorService {
     @MonitoringTarget(internalName = "concatenateMethod")
     @Override
     public String addIntToString(String s, int i) {

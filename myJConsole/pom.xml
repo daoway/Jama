@@ -6,8 +6,8 @@
   <version>1.0.2-SNAPSHOT</version>
   <packaging>jar</packaging>
 
-  <name>Jama</name>
-  <url>http://maven.apache.org</url>
+  <name>Jama JMX client</name>
+  <url>https://github.com/daoway/Jama</url>
 
     <parent>
         <groupId>com.blogspot.ostas</groupId>
@@ -16,11 +16,6 @@
     </parent>
 
      <dependencies>
-       <dependency>
-           <groupId>com.github.cb372</groupId>
-           <artifactId>metrics-sigar</artifactId>
-           <version>${sigar.version}</version>
-       </dependency>
        <dependency>
            <groupId>log4j</groupId>
            <artifactId>log4j</artifactId>

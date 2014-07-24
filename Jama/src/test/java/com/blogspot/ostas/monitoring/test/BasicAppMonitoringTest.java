@@ -3,7 +3,7 @@ package com.blogspot.ostas.monitoring.test;
 import com.blogspot.ostas.monitoring.test.service.FibonacciService;
 import com.blogspot.ostas.monitoring.test.service.MyService;
 import com.blogspot.ostas.monitoring.test.service.impl.FibonacciServiceImpl;
-import com.blogspot.ostas.monitoring.test.service.impl.StringConcatenatorServiceImpl;
+import com.blogspot.ostas.monitoring.test.service.impl.StringConcatenationServiceImpl;
 import com.blogspot.ostas.monitoring.interceptor.PerformanceMonitoringInterceptor;
 import com.blogspot.ostas.monitoring.publish.naming.MethodNamingStrategy;
 import com.blogspot.ostas.monitoring.statistics.MethodInvocationStats;
@@ -52,7 +52,7 @@ public class BasicAppMonitoringTest{
     private String computedMethodId;
     @Before
     public void setUp() throws Exception {
-        method = StringConcatenatorServiceImpl.class.getMethod("addIntToString", String.class, int.class);
+        method = StringConcatenationServiceImpl.class.getMethod("addIntToString", String.class, int.class);
         computedMethodId = methodNamingStrategy.getMethodAsString(method);
         performanceMonitor.clearStats();
     }
