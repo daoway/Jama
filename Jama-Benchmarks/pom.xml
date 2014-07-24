@@ -3,7 +3,7 @@
 
     <groupId>com.blogspot.ostas</groupId>
     <artifactId>Jama-Benchmarks</artifactId>
-    <version>1.0.2</version>
+    <version>1.0.3-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>Jama JMH benchmark</name>
@@ -11,7 +11,7 @@
     <parent>
         <groupId>com.blogspot.ostas</groupId>
         <artifactId>Jama-Parent</artifactId>
-        <version>1.0.2</version>
+        <version>1.0.3-SNAPSHOT</version>
     </parent>
 
     <dependencies>

@@ -3,7 +3,7 @@
 
     <groupId>com.blogspot.ostas</groupId>
     <artifactId>Jama-Parent</artifactId>
-    <version>1.0.2</version>
+    <version>1.0.3-SNAPSHOT</version>
     <packaging>pom</packaging>
     <url>https://github.com/daoway/Jama</url>
     <name>Jama Parent</name>
@@ -67,7 +67,7 @@
         <connection>scm:git:git@github.com:daoway/Jama.git</connection>
         <developerConnection>scm:git:git@github.com:daoway/Jama.git</developerConnection>
         <url>https://github.com/daoway/Jama.git</url>
-      <tag>Jama-Parent-1.0.2</tag>
+      <tag>HEAD</tag>
   </scm>
 
     <licenses>
