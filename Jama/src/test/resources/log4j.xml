@@ -12,7 +12,7 @@
     </appender>
 
     <appender name="file" class="org.apache.log4j.RollingFileAppender">
-        <param name="File"   value="out.log" />
+        <param name="File"   value="target/out.log" />
         <param name="Append" value="true" />
         <param name="MaxFileSize" value="3000KB" />
         <layout class="org.apache.log4j.PatternLayout">
