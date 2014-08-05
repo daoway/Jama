@@ -1,4 +1,4 @@
-package com.blogspot.ostas.monitoring.test.tools;
+package com.blogspot.ostas.monitoring.client.tools;
 
 import org.apache.log4j.Logger;
 

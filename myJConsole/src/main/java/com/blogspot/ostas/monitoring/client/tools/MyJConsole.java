@@ -1,4 +1,4 @@
-package com.blogspot.ostas.monitoring.test.tools;
+package com.blogspot.ostas.monitoring.client.tools;
 
 import javax.management.MBeanServerConnection;
 import javax.management.ObjectName;

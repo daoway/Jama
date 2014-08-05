@@ -8,8 +8,8 @@ import com.blogspot.ostas.monitoring.interceptor.PerformanceMonitoringIntercepto
 import com.blogspot.ostas.monitoring.publish.naming.MethodNamingStrategy;
 import com.blogspot.ostas.monitoring.statistics.MethodInvocationStats;
 import com.blogspot.ostas.monitoring.test.tools.AttributeDetailsUtil;
-import com.blogspot.ostas.monitoring.test.tools.MyJConsole;
-import com.blogspot.ostas.monitoring.test.tools.MyJConsoleLocalJmx;
+import com.blogspot.ostas.monitoring.client.tools.MyJConsole;
+import com.blogspot.ostas.monitoring.client.tools.MyJConsoleLocalJmx;
 import junit.framework.Assert;
 import org.apache.log4j.Logger;
 import org.junit.After;
