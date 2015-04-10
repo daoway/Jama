@@ -66,6 +66,15 @@
             <artifactId>aspectjweaver</artifactId>
             <version>${org.aspectj.version}</version>
         </dependency>
+
+
+        <dependency>
+            <groupId>com.ryantenney.metrics</groupId>
+            <artifactId>metrics-spring</artifactId>
+            <version>3.0.3</version>
+        </dependency>
+
+
     </dependencies>
 
     <build>

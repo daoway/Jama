@@ -83,5 +83,13 @@
             <version>1.0.3-SNAPSHOT</version>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>com.ryantenney.metrics</groupId>
+            <artifactId>metrics-spring</artifactId>
+            <version>3.0.3</version>
+            <scope>test</scope>
+        </dependency>
+        
     </dependencies>
 </project>
